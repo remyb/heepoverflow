@@ -14,17 +14,25 @@
         var data = new google.visualization.DataTable();
         data.addColumn('string', 'Label');
         data.addColumn('number', 'Value');
-        data.addRows(4);
-        data.setCell(0, 0, 'France');
-        data.setCell(1, 0, 'Germany');
-        data.setCell(2, 0, 'USA');
-        data.setCell(3, 0, 'Poland');
-        data.setCell(0, 1, 10, '$10,000');
-        data.setCell(1, 1, 30, '$30,000');
-        data.setCell(2, 1, 20, '$20,000');
-        data.setCell(3, 1, 7.5, '$7,500');
+        data.addRows(7);
+        data.setCell(0, 0, 'January');
+        data.setCell(1, 0, 'February');
+        data.setCell(2, 0, 'March');
+        data.setCell(3, 0, 'April');
+		data.setCell(4, 0, 'May');
+        data.setCell(5, 0, 'June');
+        data.setCell(6, 0, 'July');
+        data.setCell(0, 1, 60, '$80');
+        data.setCell(1, 1, 20, '$40');
+        data.setCell(2, 1, 70, '$90');
+        data.setCell(3, 1, 100, '$120');
+		data.setCell(4, 1, 40, '$60');
+        data.setCell(5, 1, 60, '$80');
+        data.setCell(6, 1, 100, '$120');
+
+		
         var chartDiv = document.getElementById('chartdiv');
-        var options = {title: 'Reveneues By Country'};
+        var options = {title: 'Barrel Prices by Month'};
         chart = new PilesOfMoney(chartDiv);
         chart.draw(data, options);
         //google.visualization.events.addListener(chart, 'select', handleSelect);
