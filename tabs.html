@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link type="text/css" href="http://jqueryui.com/latest/themes/base/ui.all.css" rel="stylesheet" />
+  <script type="text/javascript" src="http://jqueryui.com/latest/jquery-1.3.2.js"></script>
+  <script type="text/javascript" src="http://jqueryui.com/latest/ui/ui.core.js"></script>
+  <script type="text/javascript" src="http://jqueryui.com/latest/ui/ui.tabs.js"></script>
+  <script type="text/javascript">
+  $(document).ready(function(){
+    $("#tabs").tabs();
+  });
+  </script>
+</head>
+<body style="font-size:62.5%;">
+  
+<div id="tabs">
+    <ul>
+        <li><a href="#fragment-1"><span>Cooling Days</span></a></li>
+        <li><a href="#fragment-2"><span>Report Card</span></a></li>
+        <li><a href="#fragment-3"><span>Oil Usage</span></a></li>
+    </ul>
+    <div id="fragment-1">
+        put stuff here
+    </div>
+    <div id="fragment-2">
+		tab 2
+    </div>
+    <div id="fragment-3">
+        hello there
+    </div>
+</div>
+</body>
+</html>
