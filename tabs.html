@@ -10,24 +10,92 @@
     $("#tabs").tabs();
   });
   </script>
+  <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+  <script type="text/javascript">
+    google.load('visualization', '1', {packages: ['annotatedtimeline']});
+
+		function drawVisualization() {
+      // To see the data that this visualization uses, browse to
+      // http://spreadsheets.google.com/ccc?key=pCQbetd-CptGXxxQIG7VFIQ  
+      var query = new google.visualization.Query(
+          'http://spreadsheets.google.com/pub?key=tHl9KOB25TFl9OZ77xQM1Gg&output=html');
+
+			// Optional request to return only column C and the sum of column B, grouped by C members.
+			query.setQuery('select A,B');
+
+
+      // Send the query with a callback function.
+      query.send(handleQueryResponse);
+    }
+
+    function handleQueryResponse(response) {
+      if (response.isError()) {
+        alert('Error in query: ' + response.getMessage() + ' ' + response.getDetailedMessage());
+        return;
+      }
+      var data = response.getDataTable();
+      var annotatedtimeline = new google.visualization.AnnotatedTimeLine(
+          document.getElementById('visualization'));
+      annotatedtimeline.draw(data, {'displayAnnotations': true});
+    }
+    google.setOnLoadCallback(drawVisualization);
+    </script>
+
+	<!-- Second tab -->
+	
+	<script type="text/javascript">
+      google.load('visualization', '1', {packages: ['areachart']});
+    </script>
+    <script type="text/javascript">
+    var visualization2;
+
+    function drawVisualization2() { 
+      var query = new google.visualization.Query(
+          'http://spreadsheets.google.com/pub?key=tHl9KOB25TFl9OZ77xQM1Gg&output=html');
+			// Optional request to return only column C and the sum of column B, grouped by C members.
+			query.setQuery('select A,B');
+      // Send the query with a callback function.
+      query.send(handleQueryResponse2);
+    }
+    
+    function handleQueryResponse2(response) {
+      if (response.isError()) {
+        alert('Error in query: ' + response.getMessage() + ' ' + response.getDetailedMessage());
+        return;
+      }
+    
+      var data = response.getDataTable();
+      visualization2 = new google.visualization.AreaChart(document.getElementById('visualization2'));
+      visualization2.draw(data, {legend: 'bottom'});
+    }
+
+    google.setOnLoadCallback(drawVisualization2);
+
+	
+  </script>
 </head>
 <body style="font-size:62.5%;">
   
-<div id="tabs">
+<div id="tabs" style="width:500px; height:400px;">
     <ul>
         <li><a href="#fragment-1"><span>Cooling Days</span></a></li>
         <li><a href="#fragment-2"><span>Report Card</span></a></li>
         <li><a href="#fragment-3"><span>Oil Usage</span></a></li>
     </ul>
     <div id="fragment-1">
-        put stuff here
+        <div id="visualization" style="width: 450px; height: 350px;"></div>
     </div>
     <div id="fragment-2">
-		tab 2
+		
     </div>
     <div id="fragment-3">
         hello there
     </div>
 </div>
+<p style="font-size:14pt">Below will go in another tab...working on that</p>
+<p>
+<div id="visualization2" style="width: 450px; height: 350px;"></div>
+</p>
+
 </body>
 </html>
