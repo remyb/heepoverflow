@@ -1,0 +1,48 @@
+<!--
+  copyright (c) 2009 Google inc.
+
+  You are free to copy and use this sample.
+  License can be found here: http://code.google.com/apis/ajaxsearch/faq/#license
+-->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <title>Google Visualization API Sample</title>
+  <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+  <script type="text/javascript">
+    google.load('visualization', '1', {packages: ['columnchart']});
+    
+		function drawVisualization() {
+      // To see the data that this visualization uses, browse to
+      // http://spreadsheets.google.com/ccc?key=pCQbetd-CptGXxxQIG7VFIQ  
+      var query = new google.visualization.Query(
+          'http://spreadsheets.google.com/pub?key=tfEJbh4cezuxxxDMKlX65Zg&output=html');
+			
+			// Optional request to return only column C and the sum of column B, grouped by C members.
+			query.setQuery('select A,B');
+
+  
+      // Send the query with a callback function.
+      query.send(handleQueryResponse);
+    }
+    
+    function handleQueryResponse(response) {
+      if (response.isError()) {
+        alert('Error in query: ' + response.getMessage() + ' ' + response.getDetailedMessage());
+        return;
+      }
+      var data = response.getDataTable();
+      var barChart = new google.visualization.ColumnChart(
+          document.getElementById('visualization'));
+      barChart.draw(data, {'displayAnnotations': true, dateFormat: "MMM yy", title: '2009 Cooling Degree Day Data', is3D: true, titleX: 'Month', titleY: 'Cooling Degree Days', legend: 'none'});
+    }
+    
+    google.setOnLoadCallback(drawVisualization);
+  </script>
+</head>
+<body style="font-family: Arial;border: 0 none;">
+<div id="visualization" style="width: 800px; height: 400px;"></div>
+</body>
+</html>
