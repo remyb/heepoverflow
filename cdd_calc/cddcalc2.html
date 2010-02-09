@@ -1,0 +1,59 @@
+<html>
+<head>
+  <script type="text/javascript">
+  <!--
+    function convertText() {
+      var generation1 = document.SampleForm.myText.value;
+	    document.getElementById("generation1").innerText = parseInt(generation1);
+	    var generation2 = document.SampleForm.model.value;
+	    document.getElementById("generation2").innerText = parseInt(generation2);
+	    var year1 = document.SampleForm.model.value;
+	    document.getElementById("year1").innerText = parseInt(year1);
+	    var year2 = document.SampleForm.model.value;
+	    document.getElementById("year2").innerText = parseInt(year2);
+	    var baseTemp = document.SampleForm.model.value;
+	    document.getElementById("baseTemp").innerText = parseInt(baseTemp);
+    }
+   
+    function calcChange() {
+      var img = document.createElement("IMG");
+	    if(document.SampleForm.model.value == "Electrolux")
+	    {
+		    img.src = "fridge1.jpg";
+		    document.getElementById('image1').appendChild(img);
+	    }
+	    else if(document.SampleForm.model.value == "Frigidaire") 
+	    {
+		    img.src = "fridge2.jpg";
+		    document.getElementById('image1').appendChild(img);
+	    }
+	    else if(document.SampleForm.model.value == "General Electric")
+	    {
+		    img.src = "fridge3.jpg";
+		    document.getElementById('image1').appendChild(img);
+	    }	
+    }	
+  -->
+  </script>
+</head>
+<body>
+  <form name="SampleForm" >
+	
+	<h3>Cooling Degree Days Calculator</h3>
+	
+	<p>Please enter power generations and years:</p>
+  <p><input type="text" name="generation1" value="967000"> MWh &nbsp&nbsp&nbsp&nbsp<input type="text" name="year1" value="2008"> Year</p>
+	<p><input type="text" name="generation2" value="913000"> MWh &nbsp&nbsp&nbsp&nbsp<input type="text" name="year2" value="2009"> Year</p>
+	<p><input type="text" name="baseTemp" value="65"> Base Temperature (Farenheit)</p>
+
+  <p><input type="button" value="submit" onclick="convertText()"></p>
+
+  <p><b><u>Results</u></b><p>
+  
+  <p>185 MWh/CDD &nbsp&nbsp (2008)</p>
+  <p>200 MWh/CDD &nbsp&nbsp (2009)</p>
+  <p><b>-7.5% change</b></p>
+	
+  </form>
+</body>
+</html>
