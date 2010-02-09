@@ -4,35 +4,34 @@
   <!--
     function convertText() {
       var first = document.SampleForm.myText.value;
-	  document.getElementById("item").innerText = parseInt(first) + 1;
-	  var choice = document.SampleForm.model.value;
-	  document.getElementById("choice").innerText = choice;
-   }
+	    document.getElementById("item").innerText = parseInt(first) + 1;
+	    var choice = document.SampleForm.model.value;
+	    document.getElementById("choice").innerText = choice;
+    }
    
-   function image() {
-	.removeChild("image1");
-	var img = document.createElement("IMG");
-	if(document.SampleForm.model.value == "Electrolux")
-	{
-		img.src = "fridge1.jpg";
-		document.getElementById('image1').appendChild(img);
-	}
-	else if(document.SampleForm.model.value == "Frigidaire") 
-	{
-		img.src = "fridge2.jpg";
-		document.getElementById('image1').appendChild(img);
-	}
-	else if(document.SampleForm.model.value == "General Electric")
-	{
-		img.src = "fridge3.jpg";
-		document.getElementById('image1').appendChild(img);
-	}	
-}	
+    function image() {
+      var img = document.createElement("IMG");
+	    if(document.SampleForm.model.value == "Electrolux")
+	    {
+		    img.src = "fridge1.jpg";
+		    document.getElementById('image1').appendChild(img);
+	    }
+	    else if(document.SampleForm.model.value == "Frigidaire") 
+	    {
+		    img.src = "fridge2.jpg";
+		    document.getElementById('image1').appendChild(img);
+	    }
+	    else if(document.SampleForm.model.value == "General Electric")
+	    {
+		    img.src = "fridge3.jpg";
+		    document.getElementById('image1').appendChild(img);
+	    }	
+    }	
   -->
   </script>
 </head>
 <body>
-  <form name="SampleForm">
+  <form name="SampleForm" >
 	<!---
     <p><input type="text" name="myText"></p>
 	<p><input type="text" name="myText2"></p>
