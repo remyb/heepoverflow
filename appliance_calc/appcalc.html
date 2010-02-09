@@ -1,0 +1,63 @@
+<html>
+<head>
+  <script type="text/javascript">
+  <!--
+    function convertText() {
+      var first = document.SampleForm.myText.value;
+	  document.getElementById("item").innerText = parseInt(first) + 1;
+	  var choice = document.SampleForm.model.value;
+	  document.getElementById("choice").innerText = choice;
+   }
+   
+   function image() {
+	.removeChild("image1");
+	var img = document.createElement("IMG");
+	if(document.SampleForm.model.value == "Electrolux")
+	{
+		img.src = "fridge1.jpg";
+		document.getElementById('image1').appendChild(img);
+	}
+	else if(document.SampleForm.model.value == "Frigidaire") 
+	{
+		img.src = "fridge2.jpg";
+		document.getElementById('image1').appendChild(img);
+	}
+	else if(document.SampleForm.model.value == "General Electric")
+	{
+		img.src = "fridge3.jpg";
+		document.getElementById('image1').appendChild(img);
+	}	
+}	
+  -->
+  </script>
+</head>
+<body>
+  <form name="SampleForm">
+	<!---
+    <p><input type="text" name="myText"></p>
+	<p><input type="text" name="myText2"></p>
+	-->
+	Energy Start Model:
+	<select name="model" onchange="image()">
+		<option>Electrolux</option>
+		<option>Frigidaire</option>
+		<option>General Electric</option>
+	</select>
+	<br />
+	Non-Energy Star Model:
+	<select name="model2">
+		<option>Whirlpool</option>
+		<option>Fridge-Air</option>
+		<option>GE</option>
+	</select>
+	<!---
+    <input type="button" value="Calculate" onclick="convertText()">
+	-->
+	<div id="item"></div>
+	<div id="choice"></div>
+	<br />
+	<div id="image1" style="float:left;"></div> <b>vs.</b> <img src="fridge0.jpg" />
+	<p>Break even in 4 years</p>
+  </form>
+</body>
+</html>
