@@ -36,7 +36,7 @@
       var data = response.getDataTable();
       var annotatedtimeline = new google.visualization.AnnotatedTimeLine(
           document.getElementById('visualization'));
-      annotatedtimeline.draw(data, {'displayAnnotations': true});
+      annotatedtimeline.draw(data, {'displayAnnotations': true, dateFormat: "MMM yy"});
     }
     
     google.setOnLoadCallback(drawVisualization);

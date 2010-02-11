@@ -16,22 +16,7 @@
     }
    
     function calcChange() {
-      var img = document.createElement("IMG");
-	    if(document.SampleForm.model.value == "Electrolux")
-	    {
-		    img.src = "fridge1.jpg";
-		    document.getElementById('image1').appendChild(img);
-	    }
-	    else if(document.SampleForm.model.value == "Frigidaire") 
-	    {
-		    img.src = "fridge2.jpg";
-		    document.getElementById('image1').appendChild(img);
-	    }
-	    else if(document.SampleForm.model.value == "General Electric")
-	    {
-		    img.src = "fridge3.jpg";
-		    document.getElementById('image1').appendChild(img);
-	    }	
+      
     }	
   -->
   </script>
@@ -41,7 +26,7 @@
 	
 	<h3>Cooling Degree Days Calculator</h3>
 	
-	<p>Please enter power consumptions and years:</p>
+	<p>Please enter power usages and years:</p>
   <p><input type="text" name="usage1" value="452976"> kWh &nbsp&nbsp&nbsp&nbsp<input type="text" name="year1" value="2007"> Year</p>
 	<p><input type="text" name="usage2" value="445241"> kWh &nbsp&nbsp&nbsp&nbsp<input type="text" name="year2" value="2008"> Year</p>
 	<p><input type="text" name="baseTemp" value="65"> Base Temperature (Farenheit)</p>
