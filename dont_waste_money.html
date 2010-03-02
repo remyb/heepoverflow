@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>ProtoType: Don't Waste your Money!</title>
+		<style type="text/css">
+			#top-center {font-size:24px;text-align:center;color:blue;padding-bottom:5%;}
+			#container {border:2px solid black; width:40%;margin: 0 auto;}
+			
+			#price {color:blue;font-size:20px;font:bold;text-align:right;}
+			#type-item {padding-left:10%;}
+			#table-display{margin: 0 auto; padding-left:10px;padding-right:10px;}
+			table{width:100%;padding-left:10px;padding-right:10px;}
+			th
+			{
+				font: bold 11px "Trebuchet MS", Verdana, Arial, Helvetica,
+				sans-serif;
+				color: #6D929B;
+				border-right: 1px solid #C1DAD7;
+				border-bottom: 1px solid #C1DAD7;
+				border-top: 1px solid #C1DAD7;
+				letter-spacing: 2px;
+				text-transform: uppercase;
+				text-align: left;
+				padding: 6px 6px 6px 12px;
+				background: #CAE8EA
+			} 
+			#head{text-align:left;}
+			td
+			{ 
+				border-right: 1px solid #C1DAD7;
+				border-bottom: 1px solid #C1DAD7;
+				background: #fff;
+				padding: 6px 6px 6px 12px;
+				color: #6D929B;
+			}
+			tr.alt {
+				background: #F5FAFA;
+				color: #B4AA9D;
+			}
+			#year{color:green;}
+			#rebate{color:red;}
+		</style>
+	</head>
+	<body>
+		<div id="container">
+			<div id="top-center">
+				Don't Waste Your Money!!!
+			</div>
+			<table id="table-display">
+				<tr>
+					<th id="head">Appliance Type</th>
+				  	<th id="head">Model</th>
+				  	<th id="head">Savings<br /></th>
+				</tr>
+				<tr>
+					<td id="type">Refrigerators</td>
+					<td>
+						<select id="models">
+				 			<option>Frigidaire</option>
+						  	<option>Whilepool</option>
+						  	<option>Maytag</option>
+						</select>
+					</td>
+					<td id="price"><span id="rebate">Rebate: $26.24</span><br /><span id="year">Yearly: $14.03</span></td>
+				</tr>
+				<tr class="alt">
+					<td>Water Heaters</td>
+					<td>
+						<select id="models">
+				 			<option>Frigidaire</option>
+						  	<option>Whilepool</option>
+						  	<option>Maytag</option>
+						</select>
+					</td>
+					<td id="price"><span id="rebate">Rebate: $35.24</span><br /><span id="year">Yearly: $11.42</span></td>
+				</tr>	
+				<tr>
+					<td id="type">Washing Machines</td>
+					<td>
+						<select id="models">
+				 			<option>Frigidaire</option>
+						  	<option>Whilepool</option>
+						  	<option>Maytag</option>
+						</select>
+					</td>
+					<td id="price"><span id="rebate">Rebate: $16.74</span><br /><span id="year">Yearly: $25.78</span></td>
+				</tr>	
+				<tr class="alt">
+					<td>Air Conditioning</td>
+					<td>
+						<select id="models">
+				 			<option>Frigidaire</option>
+						  	<option>Whilepool</option>
+						  	<option>Maytag</option>
+						</select>
+					</td>
+					<td id="price"><span id="rebate">Rebate: $60.24</span><br /><span id="year">Yearly: $12.03</span></td>
+				</tr>	
+			</table>
+		</div>
+	</body>
+</html>
+		
