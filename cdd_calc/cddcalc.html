@@ -2,21 +2,20 @@
 <head>
   <script type="text/javascript">
   <!--
-    function convertText() {
-      var usage1 = document.SampleForm.myText.value;
-	    document.getElementById("usage1").innerText = parseInt(usage1);
-	    var usage2 = document.SampleForm.model.value;
-	    document.getElementById("usage2").innerText = parseInt(usage2);
-	    var year1 = document.SampleForm.model.value;
-	    document.getElementById("year1").innerText = parseInt(year1);
-	    var year2 = document.SampleForm.model.value;
-	    document.getElementById("year2").innerText = parseInt(year2);
-	    var baseTemp = document.SampleForm.model.value;
-	    document.getElementById("baseTemp").innerText = parseInt(baseTemp);
-    }
-   
-    function calcChange() {
-      
+    function calcChange(form) {
+      var results = new Array();
+      var usage1 = form.usage1.value;
+      var usage2 = form.usage2.value;
+      var year1 = form.year1.value;
+      var year2 = form.year2.value;
+      var cdd1 = 3320;
+      var cdd2 = 4092;
+      var baseTemp = form.baseTemp.value;
+      results[0] = (usage1/cdd1).toPrecision(4);
+      results[1] = (usage2/cdd2).toPrecision(4);
+ //     var string = results[0] + " kWh/CDD &nbsp&nbsp (" + year1 + ") <br />; 
+      document.getElementById("results").innerHTML = "hello";  
+      document.getElementById("results").innerHTML = " there";   
     }	
   -->
   </script>
@@ -26,19 +25,19 @@
 	
 	<h3>Cooling Degree Days Calculator</h3>
 	
-	<p>Please enter power usages and years:</p>
+	<p>Please enter power usages in KWh and years:</p>
   <p><input type="text" name="usage1" value="452976"> kWh &nbsp&nbsp&nbsp&nbsp<input type="text" name="year1" value="2007"> Year</p>
 	<p><input type="text" name="usage2" value="445241"> kWh &nbsp&nbsp&nbsp&nbsp<input type="text" name="year2" value="2008"> Year</p>
 	<p><input type="text" name="baseTemp" value="65"> Base Temperature (Farenheit)</p>
 
-  <p><input type="button" value="submit" onclick="convertText()"></p>
+  <p><input type="button" value="submit" onclick="calcChange(SampleForm)"></p>
 
-  <p><b><u>Results</u></b><p>
-  
-  <p>136 kWh/CDD &nbsp&nbsp (2007)</p>
-  <p>109 kWh/CDD &nbsp&nbsp (2008)</p>
-  <p><b>24.8% change</b></p>
-	
   </form>
+  <div id ="results">
+  <p><b><u>Results</u></b><p>
+  </div>
+
+
+  
 </body>
 </html>
