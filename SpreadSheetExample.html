@@ -1,0 +1,35 @@
+<html>
+<head>
+  <script type="text/javascript" src="gspreadsheet.js"></script>
+  <script type="text/javascript">
+  window.onload = function() {
+
+    GSpreadsheet.load("tq13fkwVrv5Yx6nSo72YY1A", { index: 'type' }, function(gs) {
+      // display all
+      document.getElementById("displayall").innerHTML = gs.displayAll('style="border: solid 1px black; margin: 10px;"');
+      
+      // show one
+      var row = gs.select('fridge');
+      document.getElementById("onebyindex").innerHTML = row.brand;
+
+      // show by row number
+      row = gs.select(1);
+      document.getElementById("onebyrownum").innerHTML = row.rebate;
+      
+      // display one row
+      document.getElementById("displayrow").innerHTML = gs.displayRow('fridge');
+    });
+
+  }
+  </script>
+</head>
+<body>
+  <div id="displayall"></div>
+  <div id="onebyindex"></div>
+  <div id="onebyrownum"></div>
+
+  <div id="displayrow"></div>
+</body>
+</html>
+
+
