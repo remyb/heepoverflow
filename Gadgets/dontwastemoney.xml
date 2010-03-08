@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Module>
+<ModulePrefs 
+    title="Don't Waste Money" 
+    width="350"
+    height="200"
+    author="Remy Baumgarten" 
+    author_email="remy.baumgarten@gmail.com"
+    description="A Quick Prototype for HEEP (Hawaiian Energy Efficiency Program)"
+    thumbnail="http://www.crulife.com/images/overflow.jpg"
+    />
+<Content type="html"><![CDATA[
+
+	<head>
+		<style type="text/css">
+			#top-center {font-size:12px;
+				text-align:center;
+				color:blue;
+				padding-bottom:5%;
+				font: bold 16px Helvetica, Helvetica, Arial;
+				padding-top:5px;}
+				
+			//#container {border:2px solid black; width:40%;margin: 0 auto;}
+			
+			#price {color:blue;font-size:12px;font:bold;text-align:right;}
+			#type-item {padding-left:1%;}
+			#table-display{margin: 0 auto; padding-left:10px;padding-right:10px;}
+			table{padding-left:5px;padding-right:5px;}
+			th
+			{
+				font: bold 11px "Trebuchet MS", Verdana, Arial, Helvetica,
+				sans-serif;
+				color: #6D929B;
+				border-right: 1px solid #C1DAD7;
+				border-bottom: 1px solid #C1DAD7;
+				border-top: 1px solid #C1DAD7;
+				letter-spacing: 2px;
+				text-transform: uppercase;
+				text-align: left;
+				//padding: 6px 6px 6px 12px;
+				background: #CAE8EA
+			} 
+			#head{text-align:left;}
+			td
+			{ 
+				border-right: 1px solid #C1DAD7;
+				border-bottom: 1px solid #C1DAD7;
+				background: #fff;
+				//padding: 6px 6px 6px 12px;
+				color: #6D929B;
+			}
+			tr.alt {
+				background: #F5FAFA;
+				color: #B4AA9D;
+			}
+			.year{color:green;}
+			.rebate{color:red;}
+		</style>
+		<script type="text/javascript">
+ /* Copyright (c) 2008 Google Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/*
+ * You wouldn't want to create these yourself, unless you can get the json yourself. Chances are you will use GSpreadsheet.load()
+ */
+var GSpreadsheet = function(key, json, options) {
+  this.key = key;
+  this.options = options || {};
+  this.data = [];
+  this.headers = [];
+  this.index = [];
+
+  // initialize the data
+  for (var x = 0; x < json.feed.entry.length; x++) {
+    var entry = json.feed.entry[x];
+    var row = {};
+    for (var i in entry) {
+      if (i.indexOf('gsx$') == 0) {
+        var key = i.substring(4);
+
+        if (x == 0) { // add to the headers on the first time around
+          this.headers.push(key);
+        }
+        
+        if (key == this.options['index']) { // save the index'd ite
+          this.index[entry[i].$t] = x;
+        }
+        row[key] = entry[i].$t;
+      }
+    }
+    this.data.push(row);
+  }
+  
+  this.each = function(callback) {
+    for (var x = 0; x < this.data.length; x++) {
+      callback(this.data[x]);
+    }
+  };
+  
+  /*
+   * Take either a key (e.g. 'firstname') or the row id that you want
+   */
+  this.select = function(id) {
+    if (typeof id == 'string') {
+      return this.data[this.index[id]];
+    } else {
+      return this.data[id];
+    }
+  };
+  
+  // -- Debugging Helpers
+  this.displayAll = function(inlineCSS) {
+    if (!inlineCSS) inlineCSS = '';
+    var table = "<table cellpadding='5' cellspacing='0' " + inlineCSS + "><tr>";
+    for (var x = 0; x < this.headers.length; x++) {
+      table += "<th style='background-color: black; color: white;'>" + this.headers[x] + "</th>";
+    }
+    table += "</tr>";
+
+    var self = this;
+    this.each(function(row) {
+      var tr = "<tr>";
+      for (var x = 0; x < self.headers.length; x++) {
+        tr += "<td style='border: 1px solid grey;'>" + row[self.headers[x]] + "</td>";
+      }
+      tr += "</tr>";
+      table += tr;
+    });
+
+    table += "</table>";
+    return table;
+  };
+  
+  this.displayRow = function(id) {
+    var row = this.select(id);
+    var keyvalues = [];
+    for (var x in row) {
+      keyvalues.push(x + ' = ' + row[x]);
+    }
+    return keyvalues.join(', ');
+  }
+}
+
+/*
+ * This is a static method that loads in spreadsheets and returns GSpreadsheets, passing them into their callback
+ */
+GSpreadsheet.load = function(key, options, callback) {
+  if (!options['worksheet']) options['worksheet'] = 'od6';
+  var worksheet = options['worksheet'];
+  
+  var callbackName = "GSpreadsheet.loader_" + key + "_" + worksheet;
+  eval(callbackName + " = function(json) { var gs = new GSpreadsheet(key, json, options); callback(gs); }");
+  
+  var script = document.createElement('script');
+
+  script.setAttribute('src', 'http://spreadsheets.google.com/feeds/list/' + key + '/' + worksheet + '/public/values' +
+                        '?alt=json-in-script&callback=' + callbackName);
+  script.setAttribute('id', 'jsonScript');
+  script.setAttribute('type', 'text/javascript');
+  document.documentElement.firstChild.appendChild(script);
+}
+                </script>
+		<script type="text/javascript">
+			
+			function saveCalc(e, index, type) {
+				//alert("you changed " + e.value +" - "+ index +" - "+ type )
+				GSpreadsheet.load("tq13fkwVrv5Yx6nSo72YY1A", { index: 'type' }, function(gs) {
+					if (type == "fridge") {
+						var row = gs.select(index);
+				    	document.getElementById("rebateFridge").innerHTML = "Rebate: $"+row.rebate;
+						document.getElementById("yearFridge").innerHTML = "Year: $"+row.savings;				
+					}
+					else if (type == "heater") {
+						var row = gs.select(index+3);
+				    	document.getElementById("rebateHeater").innerHTML = "Rebate: $"+row.rebate;
+						document.getElementById("yearHeater").innerHTML = "Year: $"+row.savings;
+					}
+					else if (type == "ac") {
+						var row = gs.select(index+6);
+				    	document.getElementById("rebateAC").innerHTML = "Rebate: $"+row.rebate;
+						document.getElementById("yearAC").innerHTML = "Year: $"+row.savings;
+					}
+					else if (type == "wash") {
+						var row = gs.select(index+9);
+				    	document.getElementById("rebateWash").innerHTML = "Rebate: $"+row.rebate;
+						document.getElementById("yearWash").innerHTML = "Year: $"+row.savings;
+					}
+					else {
+						alert('There was a problem.');
+					}
+					
+				});
+			}
+			window.onload = function() {
+				// make sure you set this to your spreadsheet and make sure you set INDEX to your KEY!!!!
+		    	GSpreadsheet.load("tq13fkwVrv5Yx6nSo72YY1A", { index: 'id' }, function(gs) {
+			   	 // display all
+				    //document.getElementById("displayall").innerHTML = gs.displayAll('style="border: solid 1px black; margin: 10px;"');
+   
+				    // Refriderators
+				    var row = gs.select(0);
+				    document.getElementById("fridge1").innerHTML = row.brand;
+					document.getElementById("rebateFridge").innerHTML = "Rebate: $"+row.rebate;
+					document.getElementById("yearFridge").innerHTML = "Year: $"+row.savings;
+					var row = gs.select(1);
+				    document.getElementById("fridge2").innerHTML = row.brand;
+					var row = gs.select(2);
+				    document.getElementById("fridge3").innerHTML = row.brand;
+				   
+					// Water Heaters
+					var row = gs.select(3);
+				    document.getElementById("heaters1").innerHTML = row.brand;
+					document.getElementById("rebateHeater").innerHTML = "Rebate: $"+row.rebate;
+					document.getElementById("yearHeater").innerHTML = "Year: $"+row.savings;
+					var row = gs.select(4);
+				    document.getElementById("heaters2").innerHTML = row.brand;
+					var row = gs.select(5);
+				    document.getElementById("heaters3").innerHTML = row.brand;
+				   
+					// AC
+					var row = gs.select(6);
+				    document.getElementById("ac1").innerHTML = row.brand;
+					document.getElementById("rebateWash").innerHTML = "Rebate: $"+row.rebate;
+					document.getElementById("yearWash").innerHTML = "Year: $"+row.savings;
+					var row = gs.select(7);
+				    document.getElementById("ac2").innerHTML = row.brand;
+					var row = gs.select(8);
+				    document.getElementById("ac3").innerHTML = row.brand;
+				
+					// Washing Machines
+					var row = gs.select(9);
+				    document.getElementById("wash1").innerHTML = row.brand;
+					document.getElementById("rebateAC").innerHTML = "Rebate: $"+row.rebate;
+					document.getElementById("yearAC").innerHTML = "Year: $"+row.savings;
+					var row = gs.select(10);
+				    document.getElementById("wash2").innerHTML = row.brand;
+					var row = gs.select(11);
+				    document.getElementById("wash3").innerHTML = row.brand;
+					
+				 	// show by row number
+				    //row = gs.select('');
+				    //document.getElementById("onebyrownum").innerHTML = row.rebate;
+    
+				    // display one row
+				    //document.getElementById("displayrow").innerHTML = gs.displayRow('fridge');
+			 	});
+			}
+		</script>
+	</head>
+	<body>
+		<div id="result"></div>
+		<div id="container">
+			<div id="top-center">
+				Don't Waste Your Money!!!
+			</div>
+			<table id="table-display">
+				<tr>
+					<th id="head">Appliance Type</th>
+				  	<th id="head">Model</th>
+				  	<th id="head">Savings<br /></th>
+				</tr>
+				<tr>
+					<td id="type">Refrigerators</td>
+					<td>
+						<select id="models" onchange="saveCalc(this.options[this.selectedIndex], this.selectedIndex, 'fridge')">
+				 			<option id ="fridge1"></option>
+						  	<option id ="fridge2"></option>
+						  	<option id ="fridge3"></option>
+						</select>
+					</td>
+					<td id="price"><span id="rebateFridge" class="rebate"></span><br /><span id="yearFridge" class="year"></span></td>
+				</tr>
+				<tr class="alt">
+					<td>Water Heaters</td>
+					<td>
+						<select id="models" onchange="saveCalc(this.options[this.selectedIndex], this.selectedIndex, 'heater')">
+				 			<option id="heaters1"></option>
+						  	<option id="heaters2"></option>
+						  	<option id="heaters3"></option>
+						</select>
+					</td>
+					<td id="price"><span id="rebateHeater" class="rebate"></span><br /><span id="yearHeater" class="year"></span></td>
+				</tr>
+				<tr class="alt">
+					<td>Air Conditioning</td>
+					<td>
+						<select id="models" onchange="saveCalc(this.options[this.selectedIndex], this.selectedIndex, 'ac')">
+				 			<option id="ac1"></option>
+						  	<option id="ac2"></option>
+						  	<option id="ac3"></option>
+						</select>
+					</td>
+					<td id="price"><span id="rebateAC" class="rebate"></span><br /><span id="yearAC" class="year"></span></td>
+				</tr>		
+				<tr>
+					<td id="type">Washing Machines</td>
+					<td>
+						<select id="models" onchange="saveCalc(this.options[this.selectedIndex], this.selectedIndex, 'wash')">
+				 			<option id="wash1"></option>
+						  	<option id="wash2"></option>
+						  	<option id="wash3"></option>
+						</select>
+					</td>
+					<td id="price"><span id="rebateWash" class="rebate"></span><br /><span id="yearWash" class="year"></span></td>
+				</tr>	
+			</table>
+		</div>
+	</body>
+
+		
+
+	
+]]></Content>
+</Module>
