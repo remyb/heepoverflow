@@ -52,7 +52,7 @@
     
       var data = response.getDataTable();
       var pChart = new google.visualization.PieChart(document.getElementById('visualization'));
-      pChart.draw(data, {is3D: true});
+      pChart.draw(data, {is3D: true, legendFontSize: 7});
     }
 
     google.setOnLoadCallback(drawVisualization);
