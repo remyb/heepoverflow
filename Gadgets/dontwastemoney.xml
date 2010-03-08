@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Module>
 <ModulePrefs 
-    title="hello world example" 
-    height="250"
-    width="400"
+    title="Don't Waste Money" 
+    width="350"
+    height="200"
+    author="Remy Baumgarten" 
+    author_email="remy.baumgarten@gmail.com"
+    description="A Quick Prototype for HEEP (Hawaiian Energy Efficiency Program)"
+    thumbnail="http://www.crulife.com/images/overflow.jpg"
     />
 <Content type="html"><![CDATA[
-<html xmlns="http://www.w3.org/1999/xhtml">
+
 	<head>
-		<title>ProtoType: Don't Waste your Money!</title>
 		<style type="text/css">
-			#top-center {font-size:14px;
+			#top-center {font-size:12px;
 				text-align:center;
 				color:blue;
 				padding-bottom:5%;
@@ -20,9 +23,9 @@
 			//#container {border:2px solid black; width:40%;margin: 0 auto;}
 			
 			#price {color:blue;font-size:12px;font:bold;text-align:right;}
-			#type-item {padding-left:3%;}
+			#type-item {padding-left:1%;}
 			#table-display{margin: 0 auto; padding-left:10px;padding-right:10px;}
-			table{width:100%;padding-left:5px;padding-right:5px;}
+			table{padding-left:5px;padding-right:5px;}
 			th
 			{
 				font: bold 11px "Trebuchet MS", Verdana, Arial, Helvetica,
@@ -34,7 +37,7 @@
 				letter-spacing: 2px;
 				text-transform: uppercase;
 				text-align: left;
-				padding: 6px 6px 6px 12px;
+				//padding: 6px 6px 6px 12px;
 				background: #CAE8EA
 			} 
 			#head{text-align:left;}
@@ -43,7 +46,7 @@
 				border-right: 1px solid #C1DAD7;
 				border-bottom: 1px solid #C1DAD7;
 				background: #fff;
-				padding: 6px 6px 6px 12px;
+				//padding: 6px 6px 6px 12px;
 				color: #6D929B;
 			}
 			tr.alt {
@@ -54,7 +57,7 @@
 			.rebate{color:red;}
 		</style>
 		<script type="text/javascript">
-                    /* Copyright (c) 2008 Google Inc.
+ /* Copyright (c) 2008 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -315,7 +318,7 @@ GSpreadsheet.load = function(key, options, callback) {
 			</table>
 		</div>
 	</body>
-</html>
+
 		
 
 	
