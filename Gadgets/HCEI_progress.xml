@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Module>
+<ModulePrefs 
+	title="HCEI Conservation Goal" 
+	width="400" 
+	height="300" 
+	author="Alex kan"
+	author_email="alexkan.work@gmail.com"
+	description="A Quick Prototype for HEEP (Hawaiian Energy Efficiency Program)"
+	thumbnail="http://www.crulife.com/images/overflow.jpg"
+	/>
+<Content type="html"><![CDATA[
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title>
+      Progress Towards HCEI Goals: Reduce Consumption
+    </title>
+    <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load('visualization', '1', {packages: ['areachart']});
+    </script>
+    <script type="text/javascript">
+    var visualization;
+
+    function drawVisualization() {
+      // To see the data that this visualization uses, browse to
+      // http://spreadsheets.google.com/pub?key=t8f_ullFmGwPAhWDoNke9Nw&output=html
+      var query = new google.visualization.Query(
+          'http://spreadsheets.google.com/pub?key=t8f_ullFmGwPAhWDoNke9Nw&output=html');
+
+      		// Apply query language.
+					 query.setQuery('SELECT A,B,C,D,E');
+
+					// Send the query with a callback function.
+      		query.send(handleQueryResponse);
+    }
+    
+    function handleQueryResponse(response) {2
+      if (response.isError()) {
+        alert('Error in query: ' + response.getMessage() + ' ' + response.getDetailedMessage());
+        return;
+      }
+    
+      var data = response.getDataTable();
+      visualization = new google.visualization.AreaChart(document.getElementById('visualization'));
+      visualization.draw(data, {legend: 'bottom', title: 'Progress Towards HCEI Goals', 
+	titleColor: 'blue', titleY: 'Energy Generation in Gigawatt-hour', min: '0', pointSize: '2', colors:['#333333','blue', '#c0c0c0', '#0099ff' ] });
+    }
+
+
+    google.setOnLoadCallback(drawVisualization);
+    </script>
+  </head>
+  <body style="font-family: Arial;border: 0 none;">
+    <div id="visualization" style="height: 250px;">		
+		
+		</div> 
+		<small><b>HCEI Conservation Goal by year 2030:</b>
+		<br />1) Reduce Energy Generation by 30% 
+		<br />2) 40% of energy Generation by Renewable sources </small> 
+  </body>
+]]></Content>
+</Module>
+
