@@ -2,8 +2,8 @@
 <Module>
 <ModulePrefs 
     title="Don't Waste Money" 
-    width="350"
-    height="200"
+    width="200"
+    height="180"
     author="Remy Baumgarten" 
     author_email="remy.baumgarten@gmail.com"
     description="A Quick Prototype for HEEP (Hawaiian Energy Efficiency Program)"
@@ -11,50 +11,66 @@
     />
 <Content type="html"><![CDATA[
 
-	<head>
+	
 		<style type="text/css">
-			#top-center {font-size:12px;
+                        
+                      select {           
+                        font: 10px "Trebuchet MS", 
+                        Verdana, Arial, Helvetica,
+			sans-serif; 
+                        width:60px;
+                      }
+                      //#models {width:10px;}
+			#top-center {
 				text-align:center;
 				color:blue;
-				padding-bottom:5%;
-				font: bold 16px Helvetica, Helvetica, Arial;
-				padding-top:5px;}
+				//padding-bottom:5%;
+				font: bold 11px Helvetica, Helvetica, Arial;
+				padding-top:1px;}
 				
-			//#container {border:2px solid black; width:40%;margin: 0 auto;}
+			//#container {border:2px solid black; width:90%;margin: 0 auto;}
 			
-			#price {color:blue;font-size:12px;font:bold;text-align:right;}
-			#type-item {padding-left:1%;}
-			#table-display{margin: 0 auto; padding-left:10px;padding-right:10px;}
-			table{padding-left:5px;padding-right:5px;}
+			//#price {width:700px;}
+			#type-item {padding-left:1px;}
+			#table-display{width: auto;}
+			//table{padding-left:5px;padding-right:5px;}
 			th
 			{
-				font: bold 11px "Trebuchet MS", Verdana, Arial, Helvetica,
+				font: bold 10px "Trebuchet MS", Verdana, Arial, Helvetica,
 				sans-serif;
 				color: #6D929B;
 				border-right: 1px solid #C1DAD7;
 				border-bottom: 1px solid #C1DAD7;
 				border-top: 1px solid #C1DAD7;
-				letter-spacing: 2px;
+				//letter-spacing: 2px;
 				text-transform: uppercase;
 				text-align: left;
 				//padding: 6px 6px 6px 12px;
-				background: #CAE8EA
+				background: #CAE8EA;
+                                
+width: auto;
 			} 
-			#head{text-align:left;}
-			td
+			#head{text-align:left; width: auto;}
+                        #type{width: auto;}
+			
+
+                        td
 			{ 
+                                font-size:10px;
 				border-right: 1px solid #C1DAD7;
 				border-bottom: 1px solid #C1DAD7;
 				background: #fff;
 				//padding: 6px 6px 6px 12px;
 				color: #6D929B;
+
 			}
 			tr.alt {
 				background: #F5FAFA;
 				color: #B4AA9D;
 			}
+  
 			.year{color:green;}
-			.rebate{color:red;}
+			.rebate{color:red; }
 		</style>
 		<script type="text/javascript">
  /* Copyright (c) 2008 Google Inc.
@@ -212,8 +228,8 @@ GSpreadsheet.load = function(key, options, callback) {
 				    // Refriderators
 				    var row = gs.select(0);
 				    document.getElementById("fridge1").innerHTML = row.brand;
-					document.getElementById("rebateFridge").innerHTML = "Rebate: $"+row.rebate;
-					document.getElementById("yearFridge").innerHTML = "Year: $"+row.savings;
+					document.getElementById("rebateFridge").innerHTML = "Rebate $"+row.rebate;
+					document.getElementById("yearFridge").innerHTML = "Year $"+row.savings;
 					var row = gs.select(1);
 				    document.getElementById("fridge2").innerHTML = row.brand;
 					var row = gs.select(2);
@@ -222,8 +238,8 @@ GSpreadsheet.load = function(key, options, callback) {
 					// Water Heaters
 					var row = gs.select(3);
 				    document.getElementById("heaters1").innerHTML = row.brand;
-					document.getElementById("rebateHeater").innerHTML = "Rebate: $"+row.rebate;
-					document.getElementById("yearHeater").innerHTML = "Year: $"+row.savings;
+					document.getElementById("rebateHeater").innerHTML = "Rebate $"+row.rebate;
+					document.getElementById("yearHeater").innerHTML = "Year $"+row.savings;
 					var row = gs.select(4);
 				    document.getElementById("heaters2").innerHTML = row.brand;
 					var row = gs.select(5);
@@ -232,8 +248,8 @@ GSpreadsheet.load = function(key, options, callback) {
 					// AC
 					var row = gs.select(6);
 				    document.getElementById("ac1").innerHTML = row.brand;
-					document.getElementById("rebateWash").innerHTML = "Rebate: $"+row.rebate;
-					document.getElementById("yearWash").innerHTML = "Year: $"+row.savings;
+					document.getElementById("rebateWash").innerHTML = "Rebate $"+row.rebate;
+					document.getElementById("yearWash").innerHTML = "Year $"+row.savings;
 					var row = gs.select(7);
 				    document.getElementById("ac2").innerHTML = row.brand;
 					var row = gs.select(8);
@@ -242,8 +258,8 @@ GSpreadsheet.load = function(key, options, callback) {
 					// Washing Machines
 					var row = gs.select(9);
 				    document.getElementById("wash1").innerHTML = row.brand;
-					document.getElementById("rebateAC").innerHTML = "Rebate: $"+row.rebate;
-					document.getElementById("yearAC").innerHTML = "Year: $"+row.savings;
+					document.getElementById("rebateAC").innerHTML = "Rebate $"+row.rebate;
+					document.getElementById("yearAC").innerHTML = "Year $"+row.savings;
 					var row = gs.select(10);
 				    document.getElementById("wash2").innerHTML = row.brand;
 					var row = gs.select(11);
@@ -258,8 +274,7 @@ GSpreadsheet.load = function(key, options, callback) {
 			 	});
 			}
 		</script>
-	</head>
-	<body>
+
 		<div id="result"></div>
 		<div id="container">
 			<div id="top-center">
@@ -267,12 +282,12 @@ GSpreadsheet.load = function(key, options, callback) {
 			</div>
 			<table id="table-display">
 				<tr>
-					<th id="head">Appliance Type</th>
+					<th id="head">Appliance</th>
 				  	<th id="head">Model</th>
-				  	<th id="head">Savings<br /></th>
+				  	<th id="head">Rebate & Year Savings</th>
 				</tr>
 				<tr>
-					<td id="type">Refrigerators</td>
+					<td id="type">Fridge</td>
 					<td>
 						<select id="models" onchange="saveCalc(this.options[this.selectedIndex], this.selectedIndex, 'fridge')">
 				 			<option id ="fridge1"></option>
@@ -294,7 +309,7 @@ GSpreadsheet.load = function(key, options, callback) {
 					<td id="price"><span id="rebateHeater" class="rebate"></span><br /><span id="yearHeater" class="year"></span></td>
 				</tr>
 				<tr class="alt">
-					<td>Air Conditioning</td>
+					<td>A/C</td>
 					<td>
 						<select id="models" onchange="saveCalc(this.options[this.selectedIndex], this.selectedIndex, 'ac')">
 				 			<option id="ac1"></option>
@@ -305,7 +320,7 @@ GSpreadsheet.load = function(key, options, callback) {
 					<td id="price"><span id="rebateAC" class="rebate"></span><br /><span id="yearAC" class="year"></span></td>
 				</tr>		
 				<tr>
-					<td id="type">Washing Machines</td>
+					<td id="type">Washing<br />Machines</td>
 					<td>
 						<select id="models" onchange="saveCalc(this.options[this.selectedIndex], this.selectedIndex, 'wash')">
 				 			<option id="wash1"></option>
@@ -317,7 +332,7 @@ GSpreadsheet.load = function(key, options, callback) {
 				</tr>	
 			</table>
 		</div>
-	</body>
+
 
 		
 
