@@ -9,16 +9,31 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+ 
+    <script>
+    function addCommas(nStr) {
+	    nStr += '';
+	    x = nStr.split('.');
+	    x1 = x[0];
+	    x2 = x.length > 1 ? '.' + x[1] : '';
+	    var rgx = /(\d+)(\d{3})/;
+	    while (rgx.test(x1)) {
+		    x1 = x1.replace(rgx, '$1' + ',' + '$2');
+	    }
+	    return x1 + x2;
+    }
+    </script>
     
     <script type="text/javascript" src="gspreadsheet.js"></script>
     <script type="text/javascript">
     window.onload = function() {
- 
+
   GSpreadsheet.load("tX8ldRZ61vk_DCAf7IZnLBg", { index: 'total' }, function(gs) {
   // show one
   var row = gs.select('Total');
-  document.getElementById("total").innerHTML = "Total: " + row.generated + " negawatts";
-  document.getElementById("savings").innerHTML = "$" + parseFloat(row.saved).toFixed(2) + " of electricity was saved by energy star rebates"
+  document.getElementById("total").innerHTML = "Total: " + addCommas(row.generated) + " negawatts";
+  //document.getElementById("savings").innerHTML = "$" + parseFloat(row.saved).toFixed(2) + " of electricity was saved by energy star rebates"
+  document.getElementById("savings").innerHTML = "$" + addCommas(parseFloat(row.saved).toFixed(2).toString()) + " of electricity was saved by energy star rebates"
   });
 }
     </script>
