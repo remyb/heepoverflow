@@ -192,7 +192,7 @@ GSpreadsheet.load = function(key, options, callback) {
 		<script type="text/javascript">
 			
 			function saveCalc(e, index, type) {
-				alert("you changed " + e.value +" - "+ index +" - "+ type )
+			//	alert("you changed " + e.value +" - "+ index +" - "+ type )
 				GSpreadsheet.load("tq13fkwVrv5Yx6nSo72YY1A", { index: 'type' }, function(gs) {
 					if (type == "fridge") {
 						var row = gs.select(index);
