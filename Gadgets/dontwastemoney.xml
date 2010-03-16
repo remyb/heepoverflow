@@ -284,7 +284,7 @@ GSpreadsheet.load = function(key, options, callback) {
 				<tr>
 					<th id="head">Appliance</th>
 				  	<th id="head">Model</th>
-				  	<th id="head">Rebate & Year Savings</th>
+				  	<th id="head">Rebate & Yearly Savings</th>
 				</tr>
 				<tr>
 					<td id="type">Fridge</td>
