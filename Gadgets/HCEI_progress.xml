@@ -13,8 +13,19 @@
   <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
     <title>
-      Progress Towards HCEI Goals: Reduce Consumption
+      Progress Towards HCEI Goals
     </title>
+		<style type="text/css">
+	 		a { font: 10px "Trebuchet MS",
+				Verdana, Arial, Helvetica,
+				sans-serif;
+				text-align:right;}
+			
+			p { font: 12px "Trebuchet MS",
+				Verdana, Arial, Helvetica,
+				sans-serif;
+				text-align:left;}
+		</style>
     <script type="text/javascript" src="http://www.google.com/jsapi"></script>
     <script type="text/javascript">
       google.load('visualization', '1', {packages: ['areachart']});
@@ -55,11 +66,11 @@
     <div id="visualization" style="height: 300px;">		
 		
 		</div> 
-		<small><b>HCEI Conservation Goal by year 2030:</b>
+		<p><b>HCEI Conservation Goal by year 2030:</b>
 		<br /> 1) Reduce energy generation by 30% 
-		<br /> 2) 40% of energy generation by renewable sources </small>
-		&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
-		<a href="http://spreadsheets.google.com/pub?key=t8f_ullFmGwPAhWDoNke9Nw&output=html" target="_blank"> Source Data </a>
+		<br /> 2) 40% of energy generation by renewable sources 
+		<a href="http://spreadsheets.google.com/pub?key=t8f_ullFmGwPAhWDoNke9Nw&output=html" target="_blank">Show Source</a>
+		</p>
   </body>
 ]]></Content>
 </Module>
