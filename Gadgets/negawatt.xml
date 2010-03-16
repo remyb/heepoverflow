@@ -13,6 +13,22 @@
     <![CDATA[
       <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  
+    <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.1/themes/base/jquery-ui.css">
+  
+    <style type="text/css">    
+      .ui-dialog { position: relative; padding: .2em; width: 300px; }
+      .ui-dialog .ui-dialog-titlebar { padding: .5em .3em .3em 1em; position: relative;  }
+      .ui-dialog .ui-dialog-title { float: left; margin: .1em 0 .2em; } 
+      .ui-dialog .ui-dialog-titlebar-close { position: absolute; right: .3em; top: 50%; width: 19px; margin: -10px 0 0 0; padding: 1px; height: 18px; }
+      .ui-dialog .ui-dialog-titlebar-close span { display: block; margin: 1px; }
+      .ui-dialog .ui-dialog-titlebar-close:hover, .ui-dialog .ui-dialog-titlebar-close:focus { padding: 0; }
+      .ui-dialog .ui-dialog-content { border: 0; padding: .5em 1em; background: none; overflow: auto; zoom: 1; }
+      .ui-dialog .ui-dialog-buttonpane { text-align: left; border-width: 1px 0 0 0; background-image: none; margin: .5em 0 0 0; padding: .3em 1em .5em .4em; }
+      .ui-dialog .ui-dialog-buttonpane button { float: right; margin: .5em .4em .5em 0; cursor: pointer; padding: .2em .6em .3em .6em; line-height: 1.4em; width:auto; overflow:visible; }
+      .ui-dialog .ui-resizable-se { width: 14px; height: 14px; right: 3px; bottom: 3px; }
+      .ui-draggable .ui-dialog-titlebar { cursor: move; }
+    </style>          
     
     <script type="text/javascript">
     /* Copyright (c) 2008 Google Inc.
@@ -136,8 +152,8 @@ GSpreadsheet.load = function(key, options, callback) {
   GSpreadsheet.load("tX8ldRZ61vk_DCAf7IZnLBg", { index: 'total' }, function(gs) {
   // show one
   var row = gs.select('Total');
-  document.getElementById("total").innerHTML = "Total: " + row.generated + " negawatts";
-  document.getElementById("savings").innerHTML = "$" + parseFloat(row.saved).toFixed(2) + " of electricity was saved by energy star rebates"
+  document.getElementById("total").innerHTML = "Total: " + addCommas(row.generated) + " negawatts";
+  document.getElementById("savings").innerHTML = "$" + addCommas(parseFloat(row.saved).toFixed(2).toString()) + " of electricity was saved by energy star rebates"
   });
 }
     </script>
@@ -176,6 +192,38 @@ GSpreadsheet.load = function(key, options, callback) {
 
     google.setOnLoadCallback(drawVisualization);
     </script>
+    
+    <script type="text/javascript">
+    function addCommas(nStr) {
+	    nStr += '';
+	    x = nStr.split('.');
+	    x1 = x[0];
+	    x2 = x.length > 1 ? '.' + x[1] : '';
+	    var rgx = /(\d+)(\d{3})/;
+	    while (rgx.test(x1)) {
+		    x1 = x1.replace(rgx, '$1' + ',' + '$2');
+	    }
+	    return x1 + x2;
+    }
+    </script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js"></script>  
+    <script type="text/javascript">
+    $(document).ready(function() {
+		var $dialog = $('<div></div>')
+			.html('What is a negawatt?<br />For the negawatt application, a negawatt is defined as a watt of power avoided or saved from use on the energy grid due to energy efficiency.<br /><br />How are the negawatt savings are calculated?<br />The amount of negawatts each rebate generates is determined by taking the difference of two averages of each appliance category.&nbsp; The first average is the yearly electrical consumption of several energy star models and the second is the average yearly electrical consumption of several non-energy star models.&nbsp; The amount of energy saved is also displayed as a monetary value.&nbsp; This estimated value is calculated using the current kilowatt cost and the estimated total amount of negawatts generated.')
+			.dialog({
+				autoOpen: false,
+				title: 'Negawatt Infomation'
+			});
+
+		$('#info').click(function() {
+			$dialog.dialog('open');
+		});
+	});
+    </script>
+              
+          
   </head>
   <body style="font-family: Arial;">
     <div id="container" >
@@ -183,6 +231,8 @@ GSpreadsheet.load = function(key, options, callback) {
       <div id="visualization" style="height:200px;"></div>
       <div id ="total" style="color:red;width:60%;margin-right:auto;margin-left:auto;font-size:11px" align="center"></div>
       <div id ="savings" style="color:blue; font-size:10px; margin-top:5px; margin-bottom:2px;margin-left:auto; margin-right:auto;text-align:center;" align="center"></div>
+      <div id="info" style="color:blue; font-size:9px; margin-left:auto; margin-right:auto;" align="center">What is a negawatt?</div> 
+      
       </body>
     ]]>
   </Content>
