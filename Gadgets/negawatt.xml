@@ -231,8 +231,8 @@ GSpreadsheet.load = function(key, options, callback) {
       <div id="visualization" style="height:200px;"></div>
       <div id ="total" style="color:red;width:60%;margin-right:auto;margin-left:auto;font-size:11px" align="center"></div>
       <div id ="savings" style="color:red; font-size:10px; margin-top:5px; margin-bottom:2px;margin-left:auto; margin-right:auto;text-align:center;" align="center"></div>
-      <center><a style="color:blue; font-size:9px; margin-left:auto; margin-right:auto;" align="center" href="http://en.wikipedia.org/wiki/Negawatt_power" target="_blank">What is a negawatt?</a> <br />
-<a style="color:blue; font-size:9px; margin-left:auto; margin-right:auto;" align="center" href="
+      <center><a style="color:blue; font-size:9px; align="center" href="http://en.wikipedia.org/wiki/Negawatt_power" target="_blank">What is a negawatt?</a> <br />
+<a style="color:blue; font-size:9px; align="center" href="
 http://spreadsheets.google.com/ccc?key=0AujgBIc3MzSVdFg4bGRSWjYxdmtfRENBZjdJWm5MQmc&hl=en" target="_blank">Show Source</a> </center>
       
       </body>
