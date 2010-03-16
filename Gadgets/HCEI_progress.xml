@@ -43,7 +43,7 @@
     
       var data = response.getDataTable();
       visualization = new google.visualization.AreaChart(document.getElementById('visualization'));
-      visualization.draw(data, {legend: 'bottom', legendFontSize: '10px', title: 'Progress Towards HCEI Goals', 
+      visualization.draw(data, {legend: 'bottom', legendFontSize: '12px', title: 'Progress Towards HCEI Goals', 
 	titleColor: 'blue', titleY: 'Generation in Gigawatt-hour', min: '0', pointSize: '2', colors:['#333333','blue', '#c0c0c0', '#0099ff' ] });
     }
 
