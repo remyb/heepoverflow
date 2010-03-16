@@ -62,15 +62,15 @@
     google.setOnLoadCallback(drawVisualization);
     </script>
   </head>
-  <body style="font-family: Arial;border: 0 none;">
+  <body>
     <div id="visualization" style="height: 300px;">		
 		
 		</div> 
-		<p><b>HCEI Conservation Goal by year 2030:</b>
+		<small><b>HCEI Conservation Goal by year 2030:</b>
 		<br /> 1) Reduce energy generation by 30% 
-		<br /> 2) 40% of energy generation by renewable sources 
+		<br /> 2) 40% of energy generation by renewable sources </small> <br />
 		<a href="http://spreadsheets.google.com/pub?key=t8f_ullFmGwPAhWDoNke9Nw&output=html" target="_blank">Show Source</a>
-		</p>
+		
   </body>
 ]]></Content>
 </Module>
