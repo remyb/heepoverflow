@@ -3,7 +3,7 @@
 <ModulePrefs 
     title="Don't Waste Money" 
     width="200"
-    height="240"
+    height="250"
     author="Remy Baumgarten" 
     author_email="remy.baumgarten@gmail.com"
     description="A Quick Prototype for HEEP (Hawaiian Energy Efficiency Program)"
@@ -13,14 +13,13 @@
 
 	
 		<style type="text/css">
-                        
-                      select {           
-                        font: 10px "Trebuchet MS", 
-                        Verdana, Arial, Helvetica,
-			sans-serif; 
-                        width:60px;
-                      }
-                      //#models {width:10px;}
+            select {           
+                font: 10px "Trebuchet MS", 
+                Verdana, Arial, Helvetica,
+				sans-serif; 
+                width:65px;
+            }
+            //#models {width:10px;}
 			#top-center {
 				text-align:center;
 				color:blue;
@@ -29,7 +28,10 @@
 				padding-top:1px;}
 				
 			//#container {border:2px solid black; width:90%;margin: 0 auto;}
-			
+			a { font: 10px "Trebuchet MS", 
+                Verdana, Arial, Helvetica,
+				sans-serif; 
+				text-align:center;}
 			//#price {width:700px;}
 			#type-item {padding-left:1px;}
 			#table-display{width: auto;}
@@ -190,7 +192,7 @@ GSpreadsheet.load = function(key, options, callback) {
 		<script type="text/javascript">
 			
 			function saveCalc(e, index, type) {
-				//alert("you changed " + e.value +" - "+ index +" - "+ type )
+				alert("you changed " + e.value +" - "+ index +" - "+ type )
 				GSpreadsheet.load("tq13fkwVrv5Yx6nSo72YY1A", { index: 'type' }, function(gs) {
 					if (type == "fridge") {
 						var row = gs.select(index);
@@ -204,22 +206,22 @@ GSpreadsheet.load = function(key, options, callback) {
 					}
 			
 					else if (type == "wash") {
-						var row = gs.select(index+9);
+						var row = gs.select(index+6);
 				    	document.getElementById("rebateWash").innerHTML = "Rebate: $"+row.rebate;
 						document.getElementById("yearWash").innerHTML = "Year: $"+row.savings;
 					}
 					else if (type == "fan") {
-						var row = gs.select(index+12);
+						var row = gs.select(index+9);
 				    	document.getElementById("rebateFan").innerHTML = "Rebate: $"+row.rebate;
 						document.getElementById("yearFan").innerHTML = "Year: $"+row.savings;
 					}
 					else if (type == "dishwash") {
-						var row = gs.select(index+15);
+						var row = gs.select(index+12);
 				    	document.getElementById("rebateDishwash").innerHTML = "Rebate: $"+row.rebate;
 						document.getElementById("yearDishwash").innerHTML = "Year: $"+row.savings;
 					}
 					else if (type == "winac") {
-						var row = gs.select(index+19);
+						var row = gs.select(index+15);
 				    	document.getElementById("rebateWinac").innerHTML = "Rebate: $"+row.rebate;
 						document.getElementById("yearWinac").innerHTML = "Year: $"+row.savings;
 					}
@@ -250,10 +252,10 @@ GSpreadsheet.load = function(key, options, callback) {
 				    document.getElementById("ductac1").innerHTML = row.brand;
 					document.getElementById("rebateDuctac").innerHTML = "Rebate $"+row.rebate;
 					document.getElementById("yearDuctac").innerHTML = "Year $"+row.savings;
-					var row = gs.select(4);
-				    document.getElementById("ductac2").innerHTML = row.brand;
-					var row = gs.select(5);
-				    document.getElementById("ductac3").innerHTML = row.brand;
+					//var row = gs.select(4);
+				    //document.getElementById("ductac2").innerHTML = row.brand;
+					//var row = gs.select(5);
+				    //document.getElementById("ductac3").innerHTML = row.brand;
 				   
 					// Clothes Washer
 					var row = gs.select(6);
@@ -280,20 +282,20 @@ GSpreadsheet.load = function(key, options, callback) {
 				    document.getElementById("dishwash1").innerHTML = row.brand;
 					document.getElementById("rebateDishwash").innerHTML = "Rebate $"+row.rebate;
 					document.getElementById("yearDishwash").innerHTML = "Year $"+row.savings;
-					var row = gs.select(13);
-				    document.getElementById("dishwash2").innerHTML = row.brand;
-					var row = gs.select(14);
-				    document.getElementById("dishwash3").innerHTML = row.brand;
+					//var row = gs.select(13);
+				    //document.getElementById("dishwash2").innerHTML = row.brand;
+					//var row = gs.select(14);
+				    //document.getElementById("dishwash3").innerHTML = row.brand;
 				
 					// Window Air Conditioner
 					var row = gs.select(15);
 				    document.getElementById("winac1").innerHTML = row.brand;
 					document.getElementById("rebateWinac").innerHTML = "Rebate $"+row.rebate;
 					document.getElementById("yearWinac").innerHTML = "Year $"+row.savings;
-					var row = gs.select(16);
-				    document.getElementById("winac2").innerHTML = row.brand;
-					var row = gs.select(17);
-				    document.getElementById("winac3").innerHTML = row.brand;
+					//var row = gs.select(16);
+				    //document.getElementById("winac2").innerHTML = row.brand;
+					//var row = gs.select(17);
+				    //document.getElementById("winac3").innerHTML = row.brand;
 					
 				 	// show by row number
 				    //row = gs.select('');
@@ -332,8 +334,8 @@ GSpreadsheet.load = function(key, options, callback) {
 					<td>
 						<select id="models" onchange="saveCalc(this.options[this.selectedIndex], this.selectedIndex, 'ductac')">
 				 			<option id="ductac1"></option>
-						  	<option id="ductac2"></option>
-						  	<option id="ductac3"></option>
+						  	<!-- <option id="ductac2"></option>
+						  	<option id="ductac3"></option> -->
 						</select>
 					</td>
 					<td id="price"><span id="rebateDuctac" class="rebate"></span><br /><span id="yearDuctac" class="year"></span></td>
@@ -365,8 +367,8 @@ GSpreadsheet.load = function(key, options, callback) {
 					<td>
 						<select id="models" onchange="saveCalc(this.options[this.selectedIndex], this.selectedIndex, 'dishwash')">
 				 			<option id="dishwash1"></option>
-						  	<option id="dishwash2"></option>
-						  	<option id="dishwash3"></option>
+						  	<!--<option id="dishwash2"></option>
+						  	<option id="dishwash3"></option> -->
 						</select>
 					</td>
 					<td id="price"><span id="rebateDishwash" class="rebate"></span><br /><span id="yearDishwash" class="year"></span></td>
@@ -374,15 +376,16 @@ GSpreadsheet.load = function(key, options, callback) {
 				<td id="type">Window Air Conditioner</td>
 					<td>
 						<select id="models" onchange="saveCalc(this.options[this.selectedIndex], this.selectedIndex, 'winac')">
-				 			<option id="winac1"></option>
+				 			<option id="winac1"></option> <!--
 						  	<option id="winac2"></option>
-						  	<option id="winac3"></option>
+						  	<option id="winac3"></option> -->
 						</select>
 					</td>
 					<td id="price"><span id="rebateWinac" class="rebate"></span><br /><span id="yearWinac" class="year"></span></td>
 				</tr>	
 			</table>
 		</div>
+		<a href ="http://spreadsheets.google.com/ccc?key=0AkeGBvRDdK1tdHExM2Zrd1ZydjVZeDZuU283MllZMUE&hl=en" target="_blank">Show Source</a>
 
 
 		
