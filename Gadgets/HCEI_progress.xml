@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Module>
 <ModulePrefs 
-	title="HCEI Conservation Goal" 
+	title="Progress Towards HCEI Goal" 
 	width="400" 
-	height="300" 
+	height="350" 
 	author="Alex kan"
 	author_email="alexkan.work@gmail.com"
 	description="A Quick Prototype for HEEP (Hawaiian Energy Efficiency Program)"
@@ -43,8 +43,8 @@
     
       var data = response.getDataTable();
       visualization = new google.visualization.AreaChart(document.getElementById('visualization'));
-      visualization.draw(data, {legend: 'bottom', title: 'Progress Towards HCEI Goals', 
-	titleColor: 'blue', titleY: 'Energy Generation in Gigawatt-hour', min: '0', pointSize: '2', colors:['#333333','blue', '#c0c0c0', '#0099ff' ] });
+      visualization.draw(data, {legend: 'bottom', legendFontSize: '10px', title: 'Progress Towards HCEI Goals', 
+	titleColor: 'blue', titleY: 'Generation in Gigawatt-hour', min: '0', pointSize: '2', colors:['#333333','blue', '#c0c0c0', '#0099ff' ] });
     }
 
 
@@ -52,13 +52,14 @@
     </script>
   </head>
   <body style="font-family: Arial;border: 0 none;">
-    <div id="visualization" style="height: 250px;">		
+    <div id="visualization" style="height: 300px;">		
 		
 		</div> 
 		<small><b>HCEI Conservation Goal by year 2030:</b>
-		<br />1) Reduce Energy Generation by 30% 
-		<br />2) 40% of energy Generation by Renewable sources </small> 
+		<br /> 1) Reduce energy generation by 30% 
+		<br /> 2) 40% of energy generation by renewable sources </small>
+		&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+		<a href="http://spreadsheets.google.com/pub?key=t8f_ullFmGwPAhWDoNke9Nw&output=html"> Source Data </a>
   </body>
 ]]></Content>
 </Module>
-
